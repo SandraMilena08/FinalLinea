@@ -1,4 +1,4 @@
-package cundi.edu.co.service;
+/*package cundi.edu.co.service;
 
 import java.util.List;
 
@@ -21,3 +21,4 @@ public interface IEstudianteService {
 	public Page<Estudiante> retornarPaginado(Pageable page);
 	public Estudiante retonarPorId(Integer idEstudiante) throws ModelNotFoundException;
 }
+*/

@@ -1,4 +1,4 @@
-package cundi.edu.co.dto;
+/*package cundi.edu.co.dto;
 
 import java.util.List;
 
@@ -116,3 +116,4 @@ public class ProfesorDto extends RepresentationModel<ProfesorDto>{
 	
 	
 }
+*/

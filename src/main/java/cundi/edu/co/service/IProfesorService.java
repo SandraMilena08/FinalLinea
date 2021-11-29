@@ -1,4 +1,4 @@
-package cundi.edu.co.service;
+/*package cundi.edu.co.service;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 
@@ -10,3 +10,4 @@ public interface IProfesorService {
 	public ProfesorDto actualizarProfesor(ProfesorDto profesor);
 	public void eliminarProfesor(int id);
 }
+*/

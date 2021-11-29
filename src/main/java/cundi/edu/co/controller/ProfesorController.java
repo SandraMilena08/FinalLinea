@@ -1,3 +1,4 @@
+/*
 package cundi.edu.co.controller;
 
 import javax.validation.Valid;
@@ -45,7 +46,7 @@ public class ProfesorController {
 	@Autowired
 	private IProfesorService service;
 	@Autowired
-	@Qualifier("profesor")
+	//@Qualifier("profesor")
 	private IMaterias serviceMaterias;
 	
 	@ApiOperation(value = "Obtener profesores"
@@ -120,4 +121,9 @@ public class ProfesorController {
 		
 		
 	}
+	
+	
+	
 }
+
+*/
