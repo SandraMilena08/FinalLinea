@@ -22,7 +22,7 @@ public class AutorServiceImpl implements IAutorService {
 	private IAutorRepository repo;
 
 	@Override
-	public Page<Autor> retornarPaginado(int page, int size) {
+	public Page<Autor> retornarPaginado(int page, int size) throws AccessDeniedException {
 		Page<Autor> pageAutor = repo.findAll(PageRequest.of(page,size));
 		pageAutor.getContent().forEach(aut ->{
 			     aut.setLibro(null);
@@ -31,7 +31,7 @@ public class AutorServiceImpl implements IAutorService {
 	}
 
 	@Override
-	public Page<Autor> retornarPaginado(Pageable page) {
+	public Page<Autor> retornarPaginado(Pageable page) throws AccessDeniedException {
 		Page<Autor> pageAutor = repo.findAll(page);
 		pageAutor.getContent().forEach(aut ->{
 			     aut.setLibro(null);

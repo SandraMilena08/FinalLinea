@@ -40,23 +40,23 @@ public class AutorController {
 	@Autowired
 	private IAutorEditorialService serviceAE;
 	
-	@PreAuthorize("hasAuthority('Administrador')  OR hasAuthority(' ') ")
+	@PreAuthorize("hasAuthority('Administrador')  OR hasAuthority(' ') ") 
 	@GetMapping(value = "/obtenerPaginado" ,produces = "application/json")
-	public ResponseEntity<?> retonarPaginado(Pageable page) {
+	public ResponseEntity<?> retonarPaginado(Pageable page) throws AccessDeniedException {
 		Page<Autor> listaAutor = service.retornarPaginado(page);
 		return new ResponseEntity<Page<Autor>>(listaAutor, HttpStatus.OK);	
 	}	
 	
 	@PreAuthorize("hasAuthority('Administrador')  OR hasAuthority('Usuario') ")
 	@GetMapping(value = "/obtenerPaginadoConsulta" ,produces = "application/json")
-	public ResponseEntity<?> retonarPaginadoConsulta(Pageable page) {
+	public ResponseEntity<?> retonarPaginadoConsulta(Pageable page) throws AccessDeniedException{
 		Page<Autor> listaAutor = service.retornarPaginado(page);
 		return new ResponseEntity<Page<Autor>>(listaAutor, HttpStatus.OK);	
 	}	
 	
 	@PreAuthorize("hasAuthority('Administrador')  OR hasAuthority('Usuario') ")
 	@GetMapping(value = "/obtenerProrId/{idAutor}" ,produces = "application/json")
-	public ResponseEntity<?> retornarPorId(@PathVariable Integer idAutor) throws ModelNotFoundException {
+	public ResponseEntity<?> retornarPorId(@PathVariable Integer idAutor) throws ModelNotFoundException, AccessDeniedException {
 		Autor autor = service.retonarPorId(idAutor);
 		return new ResponseEntity<Autor>(autor, HttpStatus.OK);	
 	}		
