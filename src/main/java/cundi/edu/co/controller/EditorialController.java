@@ -23,6 +23,7 @@ import cundi.edu.co.dto.IAutorDto;
 import cundi.edu.co.entity.Autor;
 import cundi.edu.co.entity.AutorEditorial;
 import cundi.edu.co.entity.Editorial;
+import cundi.edu.co.exception.AccessDeniedException;
 import cundi.edu.co.exception.ConflicException;
 import cundi.edu.co.exception.ModelNotFoundException;
 import cundi.edu.co.service.IAutorEditorialService;
@@ -39,13 +40,13 @@ public class EditorialController {
 	private IEditorialService service;
 	
 	@PostMapping(value = "/crear", consumes = "application/json")
-	public ResponseEntity<?> crearEditorial(@Valid @RequestBody Editorial editorial) throws ConflicException {
+	public ResponseEntity<?> crearEditorial(@Valid @RequestBody Editorial editorial) throws ConflicException, AccessDeniedException {
 		service.crear(editorial);
 		return new ResponseEntity<Object>(HttpStatus.CREATED);
 	}
 
 	@PostMapping(value = "/asociarEditorial", consumes = "application/json")
-	public ResponseEntity<?> asociarEditorial(@Valid @RequestBody AutorEditorial autorEditorial) throws ConflicException {
+	public ResponseEntity<?> asociarEditorial(@Valid @RequestBody AutorEditorial autorEditorial) throws ConflicException, AccessDeniedException {
 		serviceAutorEditorial.crear(autorEditorial);
 		return new ResponseEntity<Object>(HttpStatus.CREATED);
 	}

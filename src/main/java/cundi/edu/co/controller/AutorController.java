@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import cundi.edu.co.entity.Autor;
 import cundi.edu.co.entity.AutorEditorial;
+import cundi.edu.co.exception.AccessDeniedException;
 import cundi.edu.co.exception.ArgumentRequiredException;
 import cundi.edu.co.exception.ConflicException;
 import cundi.edu.co.exception.ModelNotFoundException;
@@ -61,7 +62,7 @@ public class AutorController {
 	}		
 
 	@PostMapping(value = "/insertar", consumes = "application/json")
-	public ResponseEntity<?> guardar(@Valid @RequestBody Autor autor) throws ConflicException {
+	public ResponseEntity<?> guardar(@Valid @RequestBody Autor autor) throws ConflicException, AccessDeniedException {
 		service.crear(autor);
 		return new ResponseEntity<Object>(HttpStatus.CREATED);
 	}
@@ -79,7 +80,7 @@ public class AutorController {
 	}
 	
 	@PostMapping(value = "/asociarEditorial", consumes = "application/json")
-	public ResponseEntity<?> asociarEditorail(@Valid @RequestBody AutorEditorial autorEditorial) throws ConflicException {
+	public ResponseEntity<?> asociarEditorail(@Valid @RequestBody AutorEditorial autorEditorial) throws ConflicException, AccessDeniedException {
 		serviceAE.crear(autorEditorial);
 		return new ResponseEntity<Object>(HttpStatus.CREATED);
 	}

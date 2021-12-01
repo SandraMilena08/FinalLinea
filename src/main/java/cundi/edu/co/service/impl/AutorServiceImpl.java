@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
 import cundi.edu.co.entity.Autor;
 import cundi.edu.co.exception.ArgumentRequiredException;
@@ -65,7 +66,7 @@ public class AutorServiceImpl implements IAutorService {
 	}
 
 	@Override
-	public void crear(Autor entity) throws ConflicException {
+	public void crear(Autor entity) throws ConflicException, AccessDeniedException {
 			if(entity.getLibro() != null) {
 				entity.getLibro().forEach(libro ->{
 						libro.setAutor(entity);
