@@ -5,7 +5,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import cundi.edu.co.entity.Autor;
-import cundi.edu.co.exception.AccessDeniedException;
 import cundi.edu.co.exception.ArgumentRequiredException;
 import cundi.edu.co.exception.ConflicException;
 import cundi.edu.co.exception.ModelNotFoundException;
@@ -23,7 +22,7 @@ public interface ICrud<T, ID> {
 	
 	public List<T> obtener();
 	
-	public void crear(T entity) throws ConflicException, AccessDeniedException;
+	public void crear(T entity) throws ConflicException;
 	
 	public void editar(T entity)  throws ArgumentRequiredException, ModelNotFoundException, ConflicException;
 	

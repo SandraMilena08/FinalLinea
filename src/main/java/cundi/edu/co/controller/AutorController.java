@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import cundi.edu.co.entity.Autor;
 import cundi.edu.co.entity.AutorEditorial;
-import cundi.edu.co.exception.AccessDeniedException;
 import cundi.edu.co.exception.ArgumentRequiredException;
 import cundi.edu.co.exception.ConflicException;
 import cundi.edu.co.exception.ModelNotFoundException;
@@ -42,27 +41,27 @@ public class AutorController {
 	
 	@PreAuthorize("hasAuthority('Administrador')  OR hasAuthority(' ') ") 
 	@GetMapping(value = "/obtenerPaginado" ,produces = "application/json")
-	public ResponseEntity<?> retonarPaginado(Pageable page) throws AccessDeniedException {
+	public ResponseEntity<?> retonarPaginado(Pageable page){
 		Page<Autor> listaAutor = service.retornarPaginado(page);
 		return new ResponseEntity<Page<Autor>>(listaAutor, HttpStatus.OK);	
 	}	
 	
 	@PreAuthorize("hasAuthority('Administrador')  OR hasAuthority('Usuario') ")
 	@GetMapping(value = "/obtenerPaginadoConsulta" ,produces = "application/json")
-	public ResponseEntity<?> retonarPaginadoConsulta(Pageable page) throws AccessDeniedException{
+	public ResponseEntity<?> retonarPaginadoConsulta(Pageable page){
 		Page<Autor> listaAutor = service.retornarPaginado(page);
 		return new ResponseEntity<Page<Autor>>(listaAutor, HttpStatus.OK);	
 	}	
 	
 	@PreAuthorize("hasAuthority('Administrador')  OR hasAuthority('Usuario') ")
 	@GetMapping(value = "/obtenerProrId/{idAutor}" ,produces = "application/json")
-	public ResponseEntity<?> retornarPorId(@PathVariable Integer idAutor) throws ModelNotFoundException, AccessDeniedException {
+	public ResponseEntity<?> retornarPorId(@PathVariable Integer idAutor) throws ModelNotFoundException{
 		Autor autor = service.retonarPorId(idAutor);
 		return new ResponseEntity<Autor>(autor, HttpStatus.OK);	
 	}		
 
 	@PostMapping(value = "/insertar", consumes = "application/json")
-	public ResponseEntity<?> guardar(@Valid @RequestBody Autor autor) throws ConflicException, AccessDeniedException {
+	public ResponseEntity<?> guardar(@Valid @RequestBody Autor autor) throws ConflicException{
 		service.crear(autor);
 		return new ResponseEntity<Object>(HttpStatus.CREATED);
 	}
@@ -80,7 +79,7 @@ public class AutorController {
 	}
 	
 	@PostMapping(value = "/asociarEditorial", consumes = "application/json")
-	public ResponseEntity<?> asociarEditorail(@Valid @RequestBody AutorEditorial autorEditorial) throws ConflicException, AccessDeniedException {
+	public ResponseEntity<?> asociarEditorail(@Valid @RequestBody AutorEditorial autorEditorial) throws ConflicException{
 		serviceAE.crear(autorEditorial);
 		return new ResponseEntity<Object>(HttpStatus.CREATED);
 	}

@@ -1,6 +1,8 @@
 package cundi.edu.co.exception;
 
 import org.springframework.http.HttpHeaders;
+
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;

@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import cundi.edu.co.dto.LibroDto;
 import cundi.edu.co.entity.Libro;
-import cundi.edu.co.exception.AccessDeniedException;
 import cundi.edu.co.exception.ArgumentRequiredException;
 import cundi.edu.co.exception.ConflicException;
 import cundi.edu.co.exception.ModelNotFoundException;
@@ -81,7 +80,7 @@ public class LibroController {
             @ApiResponse(code = 400, message = "Bad Request(solicitud incorrecta), sucedio un error"),
             @ApiResponse(code = 500, message = "Error inesperado del sistema") })
 	@PostMapping(value = "/crear", consumes = "application/json")
-	public ResponseEntity<?> crearLibro(@Valid @RequestBody Libro libro) throws ConflicException, AccessDeniedException {
+	public ResponseEntity<?> crearLibro(@Valid @RequestBody Libro libro) throws ConflicException{
 		service.crear(libro);
 		return new ResponseEntity<Object>(HttpStatus.CREATED);
 	}
