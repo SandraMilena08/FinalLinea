@@ -20,6 +20,15 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @RestController
 public class ExceptionHandle extends ResponseEntityExceptionHandler {
 	
+	@ExceptionHandler(AccessDeniedException.class)
+	public final ResponseEntity<ExceptionWrapper> manejadorAccessDeniedException(Exception e,
+			WebRequest request){
+		e.printStackTrace();
+		ExceptionWrapper ew = new ExceptionWrapper(HttpStatus.FORBIDDEN.value(), HttpStatus.FORBIDDEN.toString(), 
+					"No cuenta con la autoridad", request.getDescription(false));
+		return new ResponseEntity<ExceptionWrapper>(ew, HttpStatus.FORBIDDEN);
+	}
+	
 	@ExceptionHandler(ModelNotFoundException.class)
 	public final ResponseEntity<ExceptionWrapper>manejadorModelNotFoundException(ModelNotFoundException e, 
 			WebRequest request){

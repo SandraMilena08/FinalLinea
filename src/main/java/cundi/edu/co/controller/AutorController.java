@@ -28,10 +28,9 @@ import cundi.edu.co.service.IAutorEditorialService;
 import cundi.edu.co.service.IAutorService;
 
 
-//@PreAuthorize("hasAuthority('Administrador')")
+@PreAuthorize("hasAuthority('Administrador')")
 @RestController
 @RequestMapping("/autores")
-//@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
 public class AutorController {
 	
 	@Autowired
@@ -40,21 +39,21 @@ public class AutorController {
 	@Autowired
 	private IAutorEditorialService serviceAE;
 	
-	//@PreAuthorize("hasAuthority('Administrador')  OR hasAuthority(' ') ")
+	@PreAuthorize("hasAuthority('Administrador')  OR hasAuthority(' ') ")
 	@GetMapping(value = "/obtenerPaginado" ,produces = "application/json")
 	public ResponseEntity<?> retonarPaginado(Pageable page) {
 		Page<Autor> listaAutor = service.retornarPaginado(page);
 		return new ResponseEntity<Page<Autor>>(listaAutor, HttpStatus.OK);	
 	}	
 	
-	//@PreAuthorize("hasAuthority('Administrador')  OR hasAuthority('Vendedor') ")
+	@PreAuthorize("hasAuthority('Administrador')  OR hasAuthority('Vendedor') ")
 	@GetMapping(value = "/obtenerPaginadoConsulta" ,produces = "application/json")
 	public ResponseEntity<?> retonarPaginadoConsulta(Pageable page) {
 		Page<Autor> listaAutor = service.retornarPaginado(page);
 		return new ResponseEntity<Page<Autor>>(listaAutor, HttpStatus.OK);	
 	}	
 	
-	//@PreAuthorize("hasAuthority('Administrador')  OR hasAuthority('Vendedor') ")
+	@PreAuthorize("hasAuthority('Administrador')  OR hasAuthority('Vendedor') ")
 	@GetMapping(value = "/obtenerProrId/{idAutor}" ,produces = "application/json")
 	public ResponseEntity<?> retornarPorId(@PathVariable Integer idAutor) throws ModelNotFoundException {
 		Autor autor = service.retonarPorId(idAutor);
