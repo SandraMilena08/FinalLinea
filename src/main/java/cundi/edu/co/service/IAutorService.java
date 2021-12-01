@@ -18,4 +18,5 @@ public interface IAutorService extends ICrud<Autor, Integer>{
 	
 	public List<Autor> buscarCedula(@Param("filtro") String filtro);
 	
+	
 }

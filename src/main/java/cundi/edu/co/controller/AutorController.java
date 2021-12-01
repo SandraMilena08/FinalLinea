@@ -47,14 +47,14 @@ public class AutorController {
 		return new ResponseEntity<Page<Autor>>(listaAutor, HttpStatus.OK);	
 	}	
 	
-	@PreAuthorize("hasAuthority('Administrador')  OR hasAuthority('Vendedor') ")
+	@PreAuthorize("hasAuthority('Administrador')  OR hasAuthority('Usuario') ")
 	@GetMapping(value = "/obtenerPaginadoConsulta" ,produces = "application/json")
 	public ResponseEntity<?> retonarPaginadoConsulta(Pageable page) {
 		Page<Autor> listaAutor = service.retornarPaginado(page);
 		return new ResponseEntity<Page<Autor>>(listaAutor, HttpStatus.OK);	
 	}	
 	
-	@PreAuthorize("hasAuthority('Administrador')  OR hasAuthority('Vendedor') ")
+	@PreAuthorize("hasAuthority('Administrador')  OR hasAuthority('Usuario') ")
 	@GetMapping(value = "/obtenerProrId/{idAutor}" ,produces = "application/json")
 	public ResponseEntity<?> retornarPorId(@PathVariable Integer idAutor) throws ModelNotFoundException {
 		Autor autor = service.retonarPorId(idAutor);

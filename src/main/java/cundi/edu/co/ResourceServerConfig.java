@@ -41,8 +41,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
                 .requestMatchers()
                 .and()
                 .authorizeRequests()                  
-                .antMatchers("/autores/**" ).permitAll()                
-                .antMatchers("/editoriales/**" ).authenticated()
+                .antMatchers("/autores/**" ).authenticated()                
+                .antMatchers("/editoriales/**" ).permitAll()
                 .antMatchers("/registro/**" ).permitAll()
                 .antMatchers("/cerrarSesion/**" ).authenticated()
                 .antMatchers("/token/**" ).permitAll();                
